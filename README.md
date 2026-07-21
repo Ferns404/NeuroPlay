@@ -196,7 +196,7 @@ without explicit written permission from the copyright holders.
 
 ### Patent Reservation
 
-**Nothing in this repository shall be construed as granting, explicitly or by implication, any license, immunity, or right under any patent or pending patent application held by the researchers or the affiliated institution (St. John College of Engineering and Management).**
+**Nothing in this repository shall be construed as granting, explicitly or by implication, any license, immunity, or right under any patent or pending patent application held by the researchers or the affiliated institution.**
 
 ---
 
