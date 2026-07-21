@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | NeuroPlay</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0c0f1a url('https://www.transparenttextures.com/patterns/stardust.png');
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111526;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #2a2e45;
+    }
+    header h1 {
+      color: #38bdf8;
+      font-size: 1.5rem;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #f1f1f1;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #facc15;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(180deg, #0c0f1a, #1c2138);
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      color: #facc15;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      color: #cbd5e1;
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1c2138;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h4 {
+      color: #facc15;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #d1d5db;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 60px 0;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #facc15;
+      color: #111526;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .cta a:hover {
+      background: #eab308;
+    }
+
+    footer {
+      background: #111526;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      border-top: 1px solid #2a2e45;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NeuroPlay</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" style="color:#facc15;">About</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>About NeuroPlay</h2>
+    <p>NeuroPlay is an AI-powered cognitive training and ADHD detection platform. 
+       We combine fun, engaging games with advanced analytics to track focus, 
+       memory, and attention while delivering transparent insights into cognitive health.</p>
+  </section>
+
+  <section class="section">
+    <h3>Our Mission</h3>
+    <p style="text-align:center; max-width:800px; margin:auto; color:#cbd5e1;">
+      Our mission is to make early ADHD detection accurate, transparent, and accessible. 
+      By leveraging Explainable AI (XAI), NeuroPlay highlights behavioral factors influencing performance, 
+      and empowers schools, clinics, and families to monitor progress with confidence.
+    </p>
+  </section>
+
+  <section class="section">
+    <h3>Core Features</h3>
+    <div class="features">
+      <div class="card">
+        <h4>🧠 ADHD Screening</h4>
+        <p>Early, accurate, and objective ADHD detection powered by AI-driven analysis.</p>
+      </div>
+      <div class="card">
+        <h4>🎮 Cognitive Games</h4>
+        <p>Personalized games designed to test and improve focus, memory, and attention.</p>
+      </div>
+      <div class="card">
+        <h4>📊 Progress Tracking</h4>
+        <p>Monitor improvements over time with clear visual charts and weekly reports.</p>
+      </div>
+      <div class="card">
+        <h4>🔍 Explainable AI</h4>
+        <p>Gain clarity on which behavioral factors influence results using XAI insights.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <a href="../dashboard/index.html">Start Your Journey →</a>
+  </div>
+
+  <footer>
+    © 2025 NeuroPlay. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

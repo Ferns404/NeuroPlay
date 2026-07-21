@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Shape Dash</title>
+</head>
+<body>
+    <!-- Canvas for the new animated celestial background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- The back button functionality remains unchanged -->
+    <a href="../dashboard/index.html" class="back-btn">⬅ Back</a>
+
+    <!-- Game container - UNCHANGED -->
+    <div id="game"></div>
+
+    <!-- NEW: Results card, styled like the Stroop Game -->
+    <div id="results" class="card hidden">
+        <h2 id="performance-msg">Game Over</h2>
+        <p id="metrics">Calculating results...</p>
+        <div class="modal-controls">
+            <button class="modal-btn" id="play-again-btn">Play Again</button>
+            <button class="modal-btn" id="next-btn">Next Game</button>
+        </div>
+    </div>
+
+    <!-- The single, unified JavaScript file -->
+    <script src="js/index.js"></script>
+</body>
+</html>
+

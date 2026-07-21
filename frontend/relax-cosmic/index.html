@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Weaver - A Calming Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Breathing Exercise Visual Guide -->
+        <div class="breathing-guide">
+            <div id="breathing-circle"></div>
+            <p id="breathing-text">Breathe In...</p>
+        </div>
+
+        <!-- The main game canvas -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="finish-btn" id="finish-btn">Finish Session</button>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-backdrop" id="results-modal">
+        <div class="modal-content">
+            <h2>Session Complete</h2>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-label">Session Duration:</span>
+                    <span class="metric-value" id="metric-duration">0:00</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Total Connections:</span>
+                    <span class="metric-value" id="metric-connections">0</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Breathing Cycles:</span>
+                    <span class="metric-value" id="metric-breaths">0</span>
+                </div>
+                 <div class="metric-item">
+                    <span class="metric-label">Pacing (sec/connection):</span>
+                    <span class="metric-value" id="metric-pacing">0.0</span>
+                </div>
+            </div>
+            <!-- New: Button container for proper layout -->
+            <div class="modal-controls">
+                <button class="modal-btn" id="restart-btn">Start New Session</button>
+                <button class="modal-btn" id="next-game-btn">Next Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

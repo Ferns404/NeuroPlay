@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a1a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(20, 20, 35, 0.9);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.5);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #00f5ff;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.start-btn, .color-btn {
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  border: none;
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none; /* For the 'a' tag button */
+  display: inline-block; /* For the 'a' tag button */
+}
+
+.start-btn:hover, .color-btn:hover {
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  transform: scale(1.05);
+}
+
+/* **** UPDATED BACK BUTTON STYLE **** */
+.back-btn {
+  position: absolute; /* Now positioned relative to the body */
+  top: 15px;
+  right: 20px;
+  background-color: #ff4b5c;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #ff1e3c;
+  transform: scale(1.05);
+}
+
+#word-display {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 30px 0;
+  text-shadow: 0 0 10px, 0 0 20px, 0 0 30px;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+

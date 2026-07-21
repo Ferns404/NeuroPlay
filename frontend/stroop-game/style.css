@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  /* Removed flex properties to allow canvas to be a true background */
+  background: #0a0a0f;
+  color: #fff;
+  /* Added to prevent scrollbars */
+  overflow: hidden;
+}
+
+/* New: Styles for the animated background canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* This is crucial to place it behind everything */
+}
+
+.container {
+  /* Added positioning to ensure it's centered over the canvas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  margin: 0 auto; /* Horizontal centering */
+}
+
+.card {
+  background: rgba(20, 20, 35, 0.9);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.5);
+  /* Added z-index to ensure it's above the background */
+  position: relative;
+  z-index: 10;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.start-btn, .color-btn {
+  background: linear-gradient(135deg, #00ffff, #ff00ff);
+  border: none;
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.start-btn:hover, .color-btn:hover {
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  transform: scale(1.05);
+}
+
+.back-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: red;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.2s;
+  /* Added z-index to ensure it's above the background */
+  z-index: 100;
+}
+
+.back-btn:hover {
+  background: darkred;
+}
+
+#word-display {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Echo - N-Back Trainer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Back button -->
+    <button class="back-btn" onclick="window.location.href='../dashboard/index.html'">⬅ Back</button>
+
+    <!-- Main Game Container -->
+    <div class="game-wrapper">
+        <div id="game-hud" class="hidden">
+            <p id="trial-counter">Trial: 1 / 25</p>
+            <div id="feedback-indicator"></div>
+        </div>
+        <div id="game-area">
+            <!-- Shape will appear here -->
+            <div id="shape-container"></div>
+        </div>
+        <div class="controls-info">
+            <p>Press the <strong>SPACEBAR</strong> for a match</p>
+        </div>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div class="modal-backdrop" id="instructions-modal">
+        <div class="modal-content">
+            <h2>Stellar Echo</h2>
+            <p class="instructions-text">
+                A sequence of shapes will appear. Your mission is to press the <strong>SPACEBAR</strong> only if the current shape is the same as the one from <strong>TWO</strong> steps ago.
+                <br><br>
+                This is a test of your working memory. Stay focused!
+            </p>
+            <button class="modal-btn" id="start-btn">Begin</button>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-backdrop hidden" id="results-modal">
+        <div class="modal-content">
+            <h2 id="performance-msg">Session Complete!</h2>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-label">Avg. Reaction Time:</span>
+                    <span class="metric-value" id="metric-reaction">0.00s</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Overall Error Rate:</span>
+                    <span class="metric-value" id="metric-error">0%</span>
+                </div>
+                 <div class="metric-item">
+                    <span class="metric-label">Attention Accuracy:</span>
+                    <span class="metric-value" id="metric-accuracy">0%</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Impulse Control:</span>
+                    <span class="metric-value" id="metric-impulse">0%</span>
+                </div>
+                 <div class="metric-item">
+                    <span class="metric-label">Focus Score:</span>
+                    <span class="metric-value" id="metric-focus">0%</span>
+                </div>
+            </div>
+            <!-- Container for buttons -->
+            <div class="modal-controls">
+                <button class="modal-btn" id="play-again-btn">Play Again</button>
+                <!-- Changed "Close" to "View Report" -->
+                <a href="../dashboard/improvement_report.html" class="modal-btn" id="view-report-btn">View Report</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,261 @@
+:root {
+    --bg-dark: #1a1a2e; /* Dark background (inspired by space blue) */
+    --bg-panel: #20203a; /* Slightly lighter panel background */
+    --accent-yellow: #ffc300;
+    --accent-blue: #00bcd4;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0b0;
+    --primary-purple: #8e44ad;
+    --green-up: #4caf50;
+    --red-down: #e74c3c;
+    --stable-color: #3498db;
+    --focus-dot: #1abc9c;
+    --memory-dot: #9b59b6;
+    --attention-dot: #f1c40f;
+    --star-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* Mimic the starry background pattern */
+    background-image: radial-gradient(circle at 10% 10%, var(--star-color) 1px, transparent 1px),
+                      radial-gradient(circle at 50% 50%, var(--star-color) 1px, transparent 1px),
+                      radial-gradient(circle at 90% 90%, var(--star-color) 1px, transparent 1px);
+    background-size: 150px 150px;
+    color: var(--text-light);
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--bg-panel);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: var(--accent-yellow); 
+    display: flex;
+    align-items: center;
+}
+.logo-image {
+    height: 35px;
+    margin-right: 10px;
+}
+.navbar nav a { color: var(--text-light); text-decoration: none; margin: 0 15px; padding: 5px 0; opacity: 0.7; transition: opacity 0.3s; }
+.navbar nav a:hover { opacity: 1; }
+.navbar nav a.active { opacity: 1; border-bottom: 3px solid var(--accent-yellow); }
+
+/* Updated Log Out button style */
+.log-out-btn {
+    padding: 8px 15px;
+    border: 1px solid var(--red-down);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 10px;
+    background: none;
+    color: var(--red-down);
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.log-out-btn:hover {
+    background-color: var(--red-down);
+    color: var(--text-light);
+}
+
+/* --- Main Layout --- */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+.sidebar {
+    width: 280px;
+    padding: 20px;
+    background-color: var(--bg-panel);
+    border-radius: 10px;
+    margin-right: 20px;
+    height: fit-content;
+}
+.main-dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.panel {
+    background-color: var(--bg-panel);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* --- Sidebar Details --- */
+.user-profile { display: flex; align-items: center; margin-bottom: 25px; }
+.avatar { width: 90px; height: 90px; border-radius: 50%; margin-right: 15px; object-fit: cover; }
+.username { font-weight: bold; font-size: 1.1rem; }
+.welcome-text { font-size: 0.9rem; color: var(--text-muted); }
+.sidebar hr { border: none; height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 20px 0; }
+
+.sidebar-nav .nav-item {
+    display: flex; align-items: center; padding: 12px 10px; margin: 5px 0; text-decoration: none;
+    color: var(--text-light); opacity: 0.7; border-radius: 5px; transition: background-color 0.3s;
+}
+.sidebar-nav .nav-item i { margin-right: 10px; width: 20px; text-align: center; }
+.sidebar-nav .nav-item:hover, .sidebar-nav .nav-item.active { background-color: rgba(255, 255, 255, 0.05); opacity: 1; }
+
+/* Progress Widgets (Circles) */
+.progress-widgets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    position: relative;
+    padding-bottom: 30px; /* Space for text below circles */
+}
+.progress-circle {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Default color for JS to override */
+    background: conic-gradient(var(--accent-blue) 0%, #3e3e60 0%);
+}
+.circle-inner {
+    width: 80%;
+    height: 80%;
+    background-color: var(--bg-panel);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.progress-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.progress-circle.down .circle-inner {
+    color: var(--red-down);
+}
+
+/* --- Main Dashboard Content --- */
+.improvement-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+/* Graph Panel */
+.cognitive-progress h3 { margin-bottom: 15px; }
+.graph-container {
+    height: 250px;
+    margin-bottom: 15px;
+}
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+.legend span { display: flex; align-items: center; }
+.dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.focus { background-color: var(--focus-dot); }
+
+/* Bottom Panels Layout - Updated to make action panels larger */
+.bottom-panels {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Recent Activity is smaller, Action panels are bigger */
+    gap: 20px;
+}
+
+/* Recent Activity */
+.recent-activity h3 { margin-bottom: 15px; }
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.activity-item {
+    display: flex; justify-content: space-between; align-items: center; padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-item i { color: var(--accent-yellow); margin-right: 10px; width: 15px; text-align: center; }
+.activity-item span { flex-grow: 1; color: var(--text-light); }
+.activity-check {
+    color: var(--green-up) !important; /* Use important to override other icon styles */
+    font-size: 1.1rem;
+}
+
+/* Action Panels */
+.action-panels-container { display: flex; flex-direction: column; gap: 20px; }
+.need-clarity, .boost-mind { flex: 1; display: flex; flex-direction: column; }
+.need-clarity .header, .boost-mind .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.need-clarity .header i { color: var(--accent-yellow); font-size: 1.3rem; }
+.boost-mind .header i { color: var(--accent-blue); font-size: 1.3rem; }
+.need-clarity p, .boost-mind p { color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+
+.start-diagnosis-btn, .play-focus-btn {
+    width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s;
+}
+.start-diagnosis-btn { background-color: var(--accent-yellow); color: var(--bg-dark); }
+.play-focus-btn { background-color: var(--accent-blue); color: var(--bg-dark); }
+.start-diagnosis-btn:hover { background-color: #ffd74a; }
+.play-focus-btn:hover { background-color: #33e5ff; }
+
+/* --- Responsiveness --- */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .bottom-panels {
+        grid-template-columns: 1fr;
+    }
+    .action-panels-container {
+        flex-direction: row; /* Stack action panels side-by-side */
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .progress-widgets {
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 circles side-by-side on smaller screens */
+    }
+    .action-panels-container {
+        flex-direction: column; /* Stack action panels vertically */
+    }
+}
+

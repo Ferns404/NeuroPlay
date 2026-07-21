@@ -1,0 +1,31 @@
+ADHD Profiles
+
+1. The Classic Inattentive Persona
+Behavior: Represents individuals with generally slower processing speed and significant challenges with working memory.
+Gameplay Data: Consistently slow reaction times in all games, combined with a high number of errors in tasks requiring memory (Memory game) and selective attention (Stroop game).
+
+2. The Hyperfocused/Impulsive Persona
+Behavior: Simulates the ability to hyperfocus on simple, stimulating tasks, leading to very fast performance, but also a tendency to make impulsive mistakes.
+Gameplay Data: Very fast reaction times in the simple Reaction game, but a high error rate in the Memory and Stroop games due to impulsive clicks without sufficient thought.
+
+3. The Variable Persona
+Behavior: Models the performance inconsistency often seen in ADHD, where focus and speed can fluctuate significantly.
+Gameplay Data: A wide, unpredictable range of scores across all metrics. This persona might perform well on one metric (e.g., reaction time) but poorly on another (e.g., error rate) in the same session.
+
+4. The Executive Deficit Persona
+Behavior: Represents a specific challenge with executive functions like task-switching and cognitive flexibility, which is heavily tested by the Stroop game.
+Gameplay Data: Decent performance in the Reaction and Memory games, but a disproportionately high error rate and slow reaction time specifically in the Stroop game.
+
+Neurotypical (Non-ADHD) Profiles
+
+1. The Neurotypical High-Performer
+Behavior: A baseline profile for a user who is consistently fast, accurate, and focused.
+Gameplay Data: Low reaction times and low error rates across all three diagnosis games.
+
+2. The Neurotypical Careful Persona
+Behavior: Simulates a user who prioritizes accuracy over speed. They may be slower but are very deliberate in their actions.
+Gameplay Data: High reaction times (overlapping with the "Inattentive" ADHD persona), but a very low error rate across all games, which is the key distinguishing factor.
+
+3. The Neurotypical "Gamer" Persona
+Behavior: Represents users who are accustomed to video games, resulting in very fast reaction times but a slightly higher tolerance for making occasional mistakes due to speed.
+Gameplay Data: Very low reaction times (overlapping with the "Hyperfocused" ADHD persona), but only a moderately low error rate, distinguishing them from the more impulsive profile.

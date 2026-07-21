@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroop Task Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- New: Canvas for the animated background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="container">
+    <!-- Back button (functionality unchanged) -->
+    <button class="back-btn" onclick="window.location.href='../dashboard/index.html'">⬅ Back</button>
+
+    <!-- Instructions (unchanged) -->
+    <div id="instructions" class="card">
+      <h2>Stroop Task Game</h2>
+      <p>
+        A word will appear in a random color.  
+        <br>Click the button that matches the <strong>color</strong> of the word, not the word itself!  
+        <br>You have 20 rounds. Try to be accurate and quick.  
+      </p>
+      <button class="start-btn" onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- Game Area (unchanged) -->
+    <div id="game" class="hidden">
+      <h2 id="word-display">READY?</h2>
+      <div class="btn-group" id="color-options"></div>
+    </div>
+
+    <!-- Results (unchanged) -->
+    <div id="results" class="card hidden">
+      <h2 id="performance-msg">Good Job!</h2>
+      <p id="metrics"></p>
+      <button class="start-btn" onclick="startGame()">Play Again</button>
+      <!-- Changed class to match "Play Again" button -->
+      <button class="start-btn" onclick="goToNextGame()">Next Game</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

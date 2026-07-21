@@ -1,0 +1,280 @@
+:root {
+    --bg-color: #0a0a1a;
+    --primary-neon: #00f5ff; /* Cyan */
+    --secondary-neon: #ff00ff; /* Magenta */
+    --success-neon: #00ff7f; /* Spring Green */
+    --error-neon: #ff4444; /* Red */
+    --text-color: #e0e0e0;
+    --glow-primary: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon);
+    --glow-secondary: 0 0 5px var(--secondary-neon), 0 0 10px var(--secondary-neon);
+    --glow-success: 0 0 8px var(--success-neon), 0 0 16px var(--success-neon);
+    --glow-error: 0 0 8px var(--error-neon), 0 0 16px var(--error-neon);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.back-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background-color: #ff4b5c;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #ff1e3c;
+    transform: scale(1.05);
+}
+
+.game-wrapper {
+    width: 90vw;
+    height: 90vh;
+    max-width: 600px;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-hud {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid var(--primary-neon);
+    border-radius: 10px;
+    background-color: rgba(10, 10, 26, 0.7);
+    box-shadow: var(--glow-primary);
+    position: relative;
+}
+
+#feedback-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+#feedback-indicator.correct {
+    box-shadow: inset 0 0 23px var(--success-neon);
+    opacity: 1;
+}
+#feedback-indicator.incorrect {
+    box-shadow: inset 0 0 23px var(--error-neon);
+    opacity: 1;
+}
+
+#trial-counter {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+#game-area {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-neon);
+    box-shadow: var(--glow-secondary);
+    background: radial-gradient(ellipse at center, rgba(10, 10, 26, 0.5) 0%, rgba(10, 10, 26, 0.9) 100%);
+}
+
+#shape-container {
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    position: absolute;
+}
+#shape-container.visible {
+    opacity: 1;
+}
+
+.shape {
+    width: 100%;
+    height: 100%;
+}
+.shape.circle {
+    background-color: var(--primary-neon);
+    box-shadow: var(--glow-primary);
+    border-radius: 50%;
+}
+.shape.square {
+    background-color: var(--secondary-neon);
+    box-shadow: var(--glow-secondary);
+    border-radius: 15%;
+}
+.shape.triangle {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 120px solid var(--success-neon);
+    filter: drop-shadow(0 5px 10px var(--success-neon));
+}
+
+.controls-info {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-neon);
+    box-shadow: var(--glow-secondary);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.modal-backdrop.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-backdrop.hidden .modal-content {
+    transform: scale(0.9);
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--secondary-neon);
+    text-shadow: var(--glow-secondary);
+    margin-bottom: 20px;
+}
+
+.instructions-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.metric-label {
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+.metric-value {
+    color: var(--primary-neon);
+    font-weight: 600;
+    text-shadow: var(--glow-primary);
+}
+
+/* New: Container for modal buttons */
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.modal-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-primary);
+    text-decoration: none; /* For the 'a' tag button */
+}
+
+.modal-btn:hover {
+    background-color: var(--primary-neon);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon), 0 0 30px var(--primary-neon);
+}
+
+.hidden {
+    display: none !important;
+}
+

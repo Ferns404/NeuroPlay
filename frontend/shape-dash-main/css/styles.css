@@ -1,0 +1,155 @@
+/* General Setup and Theming */
+:root {
+    --bg-color: #0a0a1a;
+    --primary-neon: #00f5ff; /* Cyan */
+    --secondary-neon: #ff00ff; /* Magenta */
+    --text-color: #e0e0e0;
+    --glow-primary: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon);
+    --glow-secondary: 0 0 5px var(--secondary-neon), 0 0 10px var(--secondary-neon);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden; /* Prevents scrollbars from canvas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* New: Animated Celestial Background */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Game container */
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+}
+
+/* In-game timer text */
+#game p {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Langar', cursive;
+    color: var(--primary-neon);
+    text-shadow: var(--glow-primary);
+}
+
+/* Back Button Styling (Consistent with other games) */
+.back-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background-color: #ff4b5c;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background-color: #ff1e3c;
+    transform: scale(1.05);
+}
+
+/* Shape Styling (Adding the glow effect) */
+#game button, #game div[class*="Top"], #game div[class*="Bottom"], #game div[class*="Left"], #game div[class*="Right"] {
+    cursor: pointer;
+    outline: none;
+    filter: drop-shadow(0 0 8px var(--secondary-neon));
+    transition: filter 0.2s ease;
+}
+
+#game button:hover, #game div[class*="Top"]:hover, #game div[class*="Bottom"]:hover, #game div[class*="Left"]:hover, #game div[class*="Right"]:hover {
+    filter: drop-shadow(0 0 16px var(--secondary-neon));
+}
+
+/* Original Shape Structures (Unchanged) */
+button { display: block; border: 1px solid transparent; }
+.Top { width: 0; height: 0; border-left: 15vmin solid transparent; border-right: 15vmin solid transparent; }
+.Bottom { width: 0; height: 0; border-left: 15vmin solid transparent; border-right: 15vmin solid transparent; }
+.Right { width: 0; height: 0; border-top: 15vmin solid transparent; border-bottom: 15vmin solid transparent; }
+.Left { width: 0; height: 0; border-top: 15vmin solid transparent; border-bottom: 15vmin solid transparent; }
+
+/* NEW: Themed Results Card (Matches Stroop Game) */
+.card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(20, 20, 35, 0.95);
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    z-index: 2000;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--primary-neon);
+    text-shadow: var(--glow-primary);
+}
+
+.card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--text-color);
+}
+
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-btn {
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    border: none;
+    padding: 12px 20px;
+    margin: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-btn:hover {
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+

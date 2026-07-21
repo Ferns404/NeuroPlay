@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroPlay Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="navbar">
+            <div class="logo">
+                <img src="logo.jpg" alt="NeuroPlay Logo" class="logo-image">
+                NeuroPlay
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="About.html">About</a>
+                <a href="#">Resources</a>
+            </nav>
+            <div class="auth-buttons">
+                <!-- Changed to a single Log Out button -->
+                <a href="signin.html" class="log-out-btn">Log Out</a>
+            </div>
+        </header>
+
+        <main class="content-wrapper">
+            <aside class="sidebar">
+                <div class="user-profile">
+                    <img src="Fox_avatar.webp" alt="Fox Avatar" class="avatar">
+                    <div class="user-info">
+                        <p class="welcome-text">Welcome back,</p>
+                        <!-- Username updated, Level removed -->
+                        <p class="username">CookiePookie</p>
+                    </div>
+                </div>
+                <!-- Progress widgets updated with new IDs and labels -->
+                <div class="progress-widgets">
+                    <div id="metric-reaction-time" class="progress-circle p-80">
+                        <div class="circle-inner">80%</div>
+                        <p class="progress-text">Reaction Time</p>
+                    </div>
+                    <div id="metric-accuracy" class="progress-circle p-92">
+                        <div class="circle-inner">92%</div>
+                        <p class="progress-text">Accuracy</p>
+                    </div>
+                    <div id="metric-focus-score" class="progress-circle p-75">
+                        <div class="circle-inner">75%</div>
+                        <p class="progress-text">Focus Score</p>
+                    </div>
+                    <div id="metric-error-rate" class="progress-circle p-8 down">
+                        <div class="circle-inner">8%</div>
+                        <p class="progress-text">Error Rate</p>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <!-- Activity link removed -->
+                    <a href="#" class="nav-item"><i class="fas fa-file-alt"></i> Diagnosis</a>
+                    <a href="#" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+                </nav>
+            </aside>
+
+            <section class="main-dashboard">
+                <div class="improvement-header panel">
+                    <h2>Your Cognitive Journey</h2> 
+                    <!-- Encouraging one-liner updated -->
+                    <p>Every session is a step forward. Keep up the great work!</p>
+                </div>
+
+                <div class="cognitive-progress panel">
+                    <h3>Overall Cognitive Progress</h3>
+                    <div class="graph-container">
+                        <canvas id="cognitiveChart"></canvas>
+                    </div>
+                    <!-- Legend updated to only show Focus -->
+                    <div class="legend">
+                        <span><span class="dot focus"></span> Focus</span>
+                    </div>
+                </div>
+
+                <div class="bottom-panels">
+                    <div class="recent-activity panel">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Played "Memory Maze"</span>
+                                <!-- XP replaced with a checkmark icon -->
+                                <i class="fas fa-check activity-check"></i>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed daily focus challenge</span>
+                                <i class="fas fa-check activity-check"></i>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Completed daily focus challenge</span>
+                                <i class="fas fa-check activity-check"></i>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Reviewed diagnosis results</span>
+                                <i class="fas fa-check activity-check"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-panels-container">
+                        <div class="need-clarity panel">
+                            <div class="header">
+                                <h3>Cognitive *Detection*</h3>
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <p>Take diagnosis test to understand your cognitive profile.</p>
+                            <button class="start-diagnosis-btn">Start Diagnosis</button>
+                        </div>
+                        
+                        <div class="boost-mind panel">
+                            <div class="header">
+                                <h3>Targeted *Improvement*</h3>
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <p>Play personalized games designed to improve focus.</p>
+                            <button class="play-focus-btn">Play Focus Games</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

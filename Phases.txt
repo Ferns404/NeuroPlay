@@ -1,0 +1,31 @@
+The Updated Master PLAN
+
+Phase 0: Frontend Standardization (Complete): All 5 games are finalized.
+
+Phase 1: Dashboard & UI Finalization (Complete): Dashboard and Sign In pages are ready.
+
+Phase 2: Backend Foundation (Complete): FastAPI server is running with the /save_result API.
+
+Phase 3: Core Integration (Complete): All 5 games are now connected to the backend.
+
+Phase 4: AI Report Pages & API Contract (Complete): Design the mock API response for both the diagnosis and improvement reports. Create the new frontend pages that will display these reports.
+
+Phase 5: The AI "Brain" (Complete): Generate the simulated dataset. Train and save the AI model. Build the AI analysis logic to produce the data for our API contract.
+
+Phase 6: Full System Integration (Complete): Build the /get_report API. Connect the new report pages to this live API.
+
+TO-DO:
+Work on training the AI with more realistic data. For accurate diagnosis. Need a wider category and more personas (Fixed- with scope for improvement)
+Diagnosis Session Linking (Done) 
+Breathing game bug (Done)
+N-back game bug (Done)
+Diagnosis stroop layout (Done)
+
+
+
+
+venv\Scripts\activate
+uvicorn main:app --reload
+
+
+

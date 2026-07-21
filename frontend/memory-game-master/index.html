@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Memory Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <a href="../dashboard/index.html" class="back-btn">⬅ Back</a>
+
+    <div class="container">
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+
+        <section class="score-panel">
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
+            <span class="moves">0</span> Moves
+            <div class="timer">
+                <span class="min">00</span>:<span class="sec">00</span>
+            </div>
+            <div class="restart">
+                <i class="fa fa-repeat"></i>
+            </div>
+        </section>
+
+        <ul class="deck"></ul>
+
+        <section class="final-score modal">
+            <span class="controls">
+                <span class="play-again">Play again</span>
+                <i class="fa fa-times close"></i>
+            </span>
+            <h1>Score</h1>
+            <p class="comment"></p>
+            <ul class="modal-stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul>
+            <p>You matched all cards in <span id="total-time">0</span>.</p>
+
+            <div class="metrics">
+                <hr>
+                <p><strong>Reaction Time</strong> &nbsp; <span id="metric-reaction">0.00 sec avg</span></p>
+                <p><strong>Error Rate</strong> &nbsp; <span id="metric-error">0.0%</span></p>
+                <p><strong>Focus Score</strong> &nbsp; <span id="metric-focus">0.0%</span></p>
+                <p><strong>Accuracy</strong> &nbsp; <span id="metric-accuracy">0.0%</span></p>
+                <p><strong>Total Time</strong> &nbsp; <span id="metric-total">0:00</span></p>
+            </div>
+            
+            <!-- **** UPDATED BUTTON **** -->
+            <div class="modal-actions">
+                <button class="view-report-btn" id="next-game-btn">Next Game</button>
+            </div>
+            <!-- ======================== -->
+
+        </section>
+        <div class="backdrop"></div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

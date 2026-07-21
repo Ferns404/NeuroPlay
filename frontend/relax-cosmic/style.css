@@ -1,0 +1,197 @@
+:root {
+    --bg-color: #0a0a1a;
+    --primary-neon: #00f5ff;
+    --secondary-neon: #ff00ff;
+    --text-color: #e0e0e0;
+    --glow-primary: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon), 0 0 15px var(--primary-neon);
+    --glow-secondary: 0 0 5px var(--secondary-neon), 0 0 10px var(--secondary-neon), 0 0 15px var(--secondary-neon);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.game-container {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 1200px;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameCanvas {
+    background-color: rgba(10, 10, 26, 0.8);
+    border-radius: 15px;
+    cursor: crosshair;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-neon);
+    box-shadow: var(--glow-primary);
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.finish-btn {
+    background-color: transparent;
+    border: 2px solid var(--secondary-neon);
+    color: var(--secondary-neon);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-secondary);
+}
+
+.finish-btn:hover {
+    background-color: var(--secondary-neon);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--secondary-neon), 0 0 20px var(--secondary-neon), 0 0 30px var(--secondary-neon);
+}
+
+.breathing-guide {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#breathing-circle {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--primary-neon);
+    border-radius: 50%;
+    transition: transform 3s ease-in-out;
+    box-shadow: var(--glow-primary);
+}
+
+#breathing-text {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--primary-neon);
+    text-shadow: var(--glow-primary);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-neon);
+    box-shadow: var(--glow-secondary);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--secondary-neon);
+    text-shadow: var(--glow-secondary);
+    margin-bottom: 20px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.metric-label {
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+.metric-value {
+    color: var(--primary-neon);
+    font-weight: 600;
+    text-shadow: var(--glow-primary);
+}
+
+/* New: Container for modal buttons to fix layout */
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adds space between the buttons */
+    margin-top: 10px;
+}
+
+/* New: Standardized button style to match other games */
+.modal-btn {
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    border: none;
+    padding: 12px 20px;
+    margin: 0; /* Removed margin from individual buttons */
+    border-radius: 12px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-btn:hover {
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    transform: scale(1.05);
+}
+

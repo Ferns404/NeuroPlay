@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Report - NeuroPlay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --bg-panel: #20203a;
+            --accent-yellow: #ffc300;
+            --accent-blue: #00bcd4;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0b0;
+            --impact-high: #e74c3c;
+            --impact-medium: #f39c12;
+            --star-color: rgba(255, 255, 255, 0.1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, var(--star-color) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, var(--star-color) 1px, transparent 1px),
+                radial-gradient(circle at 90% 90%, var(--star-color) 1px, transparent 1px),
+                radial-gradient(circle at 25% 75%, var(--star-color) 1px, transparent 1px),
+                radial-gradient(circle at 75% 25%, var(--star-color) 1px, transparent 1px);
+            background-size: 150px 150px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .report-container {
+            background-color: var(--bg-panel);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .report-header h1 { font-size: 2.5rem; font-weight: 700; color: var(--text-light); margin-bottom: 5px; }
+        .report-header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+        .report-circle { width: 200px; height: 200px; margin: 0 auto 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; background: conic-gradient(var(--accent-yellow) 0%, #3e3e60 0%); position: relative; }
+        .circle-inner { width: 160px; height: 160px; background-color: var(--bg-panel); border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        #risk-percentage { font-size: 3.5rem; font-weight: 700; color: var(--accent-yellow); }
+        .circle-inner span:last-child { font-size: 1rem; color: var(--text-muted); }
+        .explanation-panel { background-color: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+        .explanation-panel h2 { font-size: 1.2rem; color: var(--accent-blue); margin-bottom: 10px; text-align: left; }
+        #explanation-text { color: var(--text-light); font-size: 1rem; line-height: 1.6; text-align: left; }
+        #key-factors-list { list-style: none; padding: 0; margin-top: 20px; }
+        #key-factors-list li { background-color: rgba(0, 0, 0, 0.2); padding: 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.9rem; }
+        .factor-metric { font-weight: 600; }
+        .factor-impact { padding: 5px 10px; border-radius: 5px; font-weight: 700; font-size: 0.8rem; color: #fff; }
+        .factor-impact.High { background-color: var(--impact-high); }
+        .factor-impact.Medium { background-color: var(--impact-medium); }
+        .dashboard-btn { display: inline-block; background-color: var(--accent-blue); color: var(--bg-dark); padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s, background-color 0.2s; }
+        .dashboard-btn:hover { transform: scale(1.05); background-color: #33e5ff; }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <header class="report-header">
+            <h1>Diagnosis Report</h1>
+            <p>AI-Powered Cognitive Insights</p>
+        </header>
+
+        <div id="report-circle" class="report-circle">
+            <div class="circle-inner">
+                <span id="risk-percentage">--%</span>
+                <span>ADHD Risk</span>
+            </div>
+        </div>
+
+        <div class="explanation-panel">
+            <h2>AI Analysis</h2>
+            <p id="explanation-text">Fetching your results from the AI model...</p>
+            <ul id="key-factors-list">
+                <!-- Key factors will be generated here by JS -->
+            </ul>
+        </div>
+        
+        <a href="index.html" class="dashboard-btn">Back to Dashboard</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // This function fetches the live data from our backend
+            async function fetchDiagnosisReport() {
+                const userId = "test_user_01"; // Our hard-coded user
+                // Construct the full API URL
+                const apiUrl = `http://127.0.0.1:8000/get_report/${userId}?report_type=diagnosis`;
+
+                try {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    
+                    // Once we get the data, update the page
+                    updatePage(data);
+
+                } catch (error) {
+                    console.error("Failed to fetch diagnosis report:", error);
+                    // Display an error message on the page
+                    document.getElementById('explanation-text').textContent = "Could not load the AI report. Please ensure the backend server is running and you have played the diagnosis games.";
+                }
+            }
+
+            // This function populates the page with the data received from the API.
+            function updatePage(data) {
+                const percentage = Math.round(data.adhd_risk_percent);
+                
+                // Update Circular Graph
+                const circle = document.getElementById('report-circle');
+                const percentageText = document.getElementById('risk-percentage');
+                
+                percentageText.textContent = `${percentage}%`;
+                circle.style.background = `conic-gradient(var(--accent-yellow) ${percentage}%, #3e3e60 ${percentage}%)`;
+                
+                // Update Explanation Text
+                document.getElementById('explanation-text').textContent = data.explanation;
+
+                // Update Key Factors List
+                const factorsList = document.getElementById('key-factors-list');
+                factorsList.innerHTML = ''; 
+
+                if (data.key_factors && data.key_factors.length > 0) {
+                    data.key_factors.forEach(factor => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <span class="factor-metric">${factor.metric}</span>
+                            <span class="factor-impact ${factor.impact}">${factor.impact}</span>
+                        `;
+                        factorsList.appendChild(li);
+                    });
+                }
+            }
+
+            // Call the fetch function when the page loads
+            fetchDiagnosisReport();
+        });
+    </script>
+</body>
+</html>
