@@ -196,7 +196,7 @@ without explicit written permission from the copyright holders.
 
 ### Patent Reservation
 
-**Nothing in this repository shall be construed as granting, explicitly or by implication, any license, immunity, or right under any patent or pending patent application held by the researchers or the affiliated institution.**
+**This repository contains technology, methodologies, algorithms, and other intellectual property that are subject to patent protection and/or pending patent applications held by the patent owner(s) and affiliated institution. The public availability of this repository does not grant, explicitly or by implication, any license, immunity, permission, or right to use, copy, reproduce, implement, commercialize, distribute, modify, claim ownership of, or seek patent protection for the patented or patent-pending technology contained within it. Nothing in this repository shall be construed as authorizing any person or entity to appropriate, misrepresent, or repatent/reuse the technology or methodology as their own. All patent rights are expressly reserved by the patent owner(s).**
 
 ---
 
